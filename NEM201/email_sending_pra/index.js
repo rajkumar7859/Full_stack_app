@@ -8,7 +8,7 @@ app.use(express.json())
 
 
  const tranport= nodemailer.createTransport({
-    service: 'gmail',
+    service:'gmail',
     port:587,
     auth:{
         user:"rajkumarroaster7877@gmail.com",
@@ -22,12 +22,14 @@ const mailInfo={
     subject:"Hello",
     text:"Jay shree Ram"
 }
-app.get( '/' ,(req , res) => res.send('hello')) 
+app.get( '/' ,(req , res) => 
+res.sendFile(__dirname + "/index.html")
+) 
 
 
 app.get("/login" , (req, res)=>{
     tranport.sendMail(mailInfo ,(error , info)=>{
-
+        
         if(error)
         {
             console.log(error);
