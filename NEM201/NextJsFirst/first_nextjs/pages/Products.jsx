@@ -24,7 +24,7 @@ const Products = () => {
     return (
         <>
         <h1>Product Page</h1>
-    {loading?<h1>Loading.....</h1>:
+    {loading?<img style={{margin:"auto" , width:"200px"}} src="https://icons8.com/preloaders/preloaders/1480/Fidget-spinner.gif" alt="page loader"/>:
         <div className={styles.productContainer}>
       {
         allProduct.map((item)=>{
