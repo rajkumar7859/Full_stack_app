@@ -1,0 +1,10 @@
+.productContainer{
+    border: 1px solid;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.productImage{
+
+}
