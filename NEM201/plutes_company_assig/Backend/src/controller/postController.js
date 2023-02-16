@@ -2,37 +2,19 @@ const Post = require('../models/postModel');
 const User = require('../models/userModel');
 
 exports.createPost = async (req, res) => {
-  try {
-    const post = new Post(req.body);
-    await post.save();
-    res.status(201).json(post);
-    
-    // Check if post is famous
-    const posts = await Post.find({ userId: post.userId });
-    const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0);
-    const averageLikes = totalLikes / posts.length;
-    if (post.likes > averageLikes * 2) {
-      const transporter = nodemailer.createTransport({
-        // Set up your email configuration here
-      });
-      const mailOptions = {
-        from: 'sender@example.com',
-        to: User.email,
-        subject: 'Your post is famous!',
-        text: `Congratulations, your post "${post.data}" has received ${post.likes} likes and is now famous!`,
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log(`Email sent: ${info.response}`);
-        }
-      });
+
+    const { userId, data , likes } = req.body;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error creating post');
-  }
+    const post = new Post({ userId, data, likes });
+    try {
+      await post.save();
+      res.status(201).json({ message: 'Post created successfully', post });
+    } catch (error) {
+      res.status(500).json({ error: 'Error creating post' });
+    }
 };
 
 
@@ -44,7 +26,7 @@ exports.getPost=async(req,res)=>{
           res.json(posts.map(post => ({
             id: post._id,
             data: post.data,
-            likes: post.likes,
+            likes: post.likes.length-1,
             user: post.userId
           })));
         } catch (error) {
