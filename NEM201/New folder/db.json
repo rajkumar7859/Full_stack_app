@@ -1,0 +1,26 @@
+{
+    "Laptops":{
+        "Dell": 50,
+        "HP": 23,
+        "Lenovo": 40,
+        "Macbook": 15
+    },
+    "Cameras":{
+        "Nikon": 30,
+        "Canon": 23,
+        "Sony": 40,
+        "Pentax": 15
+    },
+    "Monitors":{
+        "Samsung": 50,
+        "HP": 23,
+        "Lenovo": 40,
+        "Asus": 15
+    },
+    "MobilePhones":{
+        "iPhone": 115,
+        "Samsung": 53,
+        "Redmi": 140,
+        "Oppo": 215
+    }
+}

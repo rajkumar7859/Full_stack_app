@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+/* ************************************sign up css start********************************* */
+.signupContainer{
+  width: 30%;
+  margin: auto;
+  margin-top: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.signupContainer input{
+  padding: 7px;
+  margin: auto;
+  margin-bottom:7px;
+  display: block;
+  width: 90%;
+}
+.signUpBtn{
+  font-size: 19px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: rgb(129, 187, 253);
+  border: none;
+padding: 7px 30px;
+
+}
+
+/* ************************************sign up css end********************************* */
+/* ************************************Login css start********************************* */
+.loginContainer{
+  width: 30%;
+  margin: auto;
+  margin-top: 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.loginContainer input{
+  padding: 7px;
+  margin: auto;
+  margin-bottom:7px;
+  display: block;
+  width: 90%;
+}
+.loginBtn{
+  font-size: 19px;
+  font-weight: 500;
+  border-radius: 10px;
+  background-color: rgb(129, 187, 253);
+  border: none;
+padding: 7px 30px;
+}
+
+/* ************************************Login css end********************************* */

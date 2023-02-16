@@ -2,10 +2,8 @@ const express = require('express')
 const nodemailer=require("nodemailer")
 const app = express()
 
-
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-
 
  const tranport= nodemailer.createTransport({
     service:'gmail',
@@ -26,10 +24,9 @@ app.get( '/' ,(req , res) =>
 res.sendFile(__dirname + "/index.html")
 ) 
 
-
 app.get("/login" , (req, res)=>{
     tranport.sendMail(mailInfo ,(error , info)=>{
-        
+
         if(error)
         {
             console.log(error);
