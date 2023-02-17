@@ -1,14 +1,14 @@
-const Post = require('../models/postModel');
-const User = require('../models/userModel');
+const postModel = require('../models/postModel');
+const userModel = require('../models/userModel');
 
+// Creating new post and by checking the user is regiester or not 
 exports.createPost = async (req, res) => {
-
     const { userId, data , likes } = req.body;
-    const user = await User.findById(userId);
+    const user = await userModel.findById(userId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    const post = new Post({ userId, data, likes });
+    const post = new postModel({ userId, data, likes });
     try {
       await post.save();
       res.status(201).json({ message: 'Post created successfully', post });
@@ -21,7 +21,7 @@ exports.createPost = async (req, res) => {
 // get all post data
 exports.getPost=async(req,res)=>{
         try {
-          const posts = await Post.find().populate('userId', 'name email').exec();
+          const posts = await postModel.find().populate('userId', 'name email').exec();
       
           res.json(posts.map(post => ({
             id: post._id,

@@ -18,7 +18,7 @@ app.use("/post", postRouter )
 app.post("/likes" , likePost)
 app.get("/famous" , getFamousPosts)
 
-
+// For general server checking
 app.get('/', (req, res) => res.send('hello'))
 
 
@@ -30,3 +30,20 @@ app.listen(port, () => {
     console.log(error.message);
   }
 })
+
+
+
+//  Data posting formate
+// {
+//   "userId":"63ee142b204c49b6666bdb2f",
+//   "postId":"63ee28347ef729330861663d"
+// }
+// {
+//     "userId": "63ee2a0a1139d12a2bf7f485",
+//     "data": "hello my name is rajkumar "
+// }
+// {
+//   "name":"user16",
+//   "email":"user16@gmail.com",
+//   "password":"pradyuman"
+// }

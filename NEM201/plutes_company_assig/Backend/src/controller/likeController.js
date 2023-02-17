@@ -1,3 +1,4 @@
+const { sendMail } = require("../../utils/sendEmail");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 
@@ -16,22 +17,15 @@ exports.likePost = async (req, res) => {
     post.likes.push(userId);
     await post.save();
     const creator = await User.findById(post.userId);
-    const likesCount = post.likes.length;
+    const likesCount = post.likes.length-1;
     const threshold = Math.max(100, likesCount * 0.5);
     if (likesCount >= threshold) {
-      try {
-        await sendEmail({
-          email: User.email,
+        await sendMail({
+          email: creator.email,
           subject: `Your post "${post.data}" is now famous`,
-          message,
+          message: `Congratulations! Your post "${post.data}" has become famous with ${likesCount} likes and is now considered famous. Keep up the good work!`
         });
-        res.status(200).json({
-          success: true,
-          message: `Congratulations! Your post has received ${likesCount} likes and is now considered famous. Keep up the good work!`,
-        });
-      } catch (error) {
-        res.status(500).json({error:"mail sending error"})
-      }
+
     }
     res
       .status(200)
