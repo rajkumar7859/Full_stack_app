@@ -1,7 +1,7 @@
 const express =require("express");
 const Connect = require("./db");
-const statisticRouter=require("./routes/statistics.Router")
 require("dotenv").config()
+const statisticRouter= require("./routes/statisticsRouter")
 
 const app= express()
 port=process.env.PORT
