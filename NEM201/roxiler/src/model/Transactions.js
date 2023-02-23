@@ -8,6 +8,5 @@ const TransactionSchema = new mongoose.Schema({
   sold:Boolean,
   dateOfSale:Date,
 });
-
-const Transactions = mongoose.model('Transactions', TransactionSchema );
-module.exports=Transactions
+ 
+module.exports=mongoose.model('Transactions', TransactionSchema );

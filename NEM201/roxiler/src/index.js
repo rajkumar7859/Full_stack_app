@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.get("/" , (req, res)=>res.send("Hello! Rajkumar vishwakarma this side"))
 
-app.use("/statistics" ,statisticRouter)
+app.use("/init" ,statisticRouter)
 
 Connect()
 app.listen(port,()=>{
